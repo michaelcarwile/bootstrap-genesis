@@ -5,7 +5,8 @@ WordPress Genesis Child Theme setup to use Bootstrap 3, Sass, and Grunt.
 Contributors
 ----------------------------------
 [@salcode](https://github.com/salcode), [@dustyndoyle](https://github.com/dustyndoyle),
-[@codenameEli](https://github.com/codenameeli), [@bryanwillis](https://github.com/bryanwillis)
+[@codenameEli](https://github.com/codenameeli), [@bryanwillis](https://github.com/bryanwillis),
+[@michaelcarwile](https://github.com/michaelcarwile)
 
 
 The CSS is Missing
@@ -37,6 +38,56 @@ Why no CSS in style.css?
 Since I'm treating the CSS as a compiled asset that I do not want to include it
 in version control, I use `style.css` only for the theme header information and
 all applied CSS is stored in `css/style.min.css`
+
+
+Override/Customize as a 'grandchild' theme
+---------------------------------
+This repo will ignore these files, so if you want them tracked you'll need to
+setup a repo inside the `custom` directory and track it separately - either as
+a `submodule` or a `subtree`. The Gruntfile will look for directory structure
+that looks like this:
+```
+custom/css
+custom/lib
+custom/js
+```
+
+Copypasta (while in the root `bootstrap-genesis` directory):
+```
+mkdir -p custom/{css,lib,js}
+touch custom/{css/custom.scss,lib/custom-functions.php,js/custom.js}
+```
+
+Using grunt build scripts and project setup
+----------------------------------
+
+**Machine Setup**
+NOTE: Machine Setup must have occurred at lease once previously
+on this machine:  
+
+*Install nodejs from*
+http://nodejs.org/download/
+or, if on Linux (Ubuntu/Debian):  
+`sudo apt-get install -y nodejs-legacy`
+
+*NOTE: `nodejs-legacy` is required as `node` causes build errors.*
+
+*From the command line install grunt cli*  
+`sudo npm install -g grunt-cli`
+
+*From the commdand line install sass*  
+`sudo gem install sass`
+
+*Install grunt for this project (generates ./node_modules).*  
+Run from within this directory (bootstrap-genesis):  
+`npm install`
+
+**-- Machine Setup Complete**
+
+*Run grunt to build initial scripts and styles:*  
+`grunt`  
+
+*NOTE: see `Gruntfile.js` for more options related to grunt.*
 
 
 Menu Modifications
