@@ -10,26 +10,7 @@ grunt
 # does NOT start watch
 grunt prod
 
-Project Setup
---------------
-# install grunt for this project (generates ./node_modules)
-# run from within this directory
-npm install
 
-# NOTE: Machine Setup (heading below) must have occurred
-# at least once previously on this machine
-
-
-Machine Setup
---------------
-# install nodejs from
-http://nodejs.org/download/
-
-# from the command line install grunt cli
-sudo npm install -g grunt-cli
-
-# from the commdand line install sass
-sudo gem install sass
 */
 
     // we can set our default build state to either
@@ -48,7 +29,7 @@ var build_state = 'prod',
     watched_sass_files = [ 'css/sass/**/*.scss' ],
     uglify_source_files = [
         'js/vendor/**/*.js',
-        'js/custom/javascript.js',
+        'js/custom/*.js',
     ],
     uglify_files = {
         'js/javascript.min.js': uglify_source_files
@@ -141,4 +122,3 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-contrib-watch");
     grunt.loadNpmTasks("grunt-contrib-uglify");
 };
-
